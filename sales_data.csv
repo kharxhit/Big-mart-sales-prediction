@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+
+# Set the random seed for reproducibility
+np.random.seed(42)
+
+# Define the number of samples
+num_samples = 1000
+
+# Define the categorical features and their possible values
+categorical_features = ['category', 'brand']
+category_values = ['Electronics', 'Clothing', 'Home', 'Sports']
+brand_values = ['Brand A', 'Brand B', 'Brand C']
+
+# Define the numerical features
+numerical_features = ['price', 'rating']
+
+# Generate random data
+data = pd.DataFrame(columns=categorical_features + numerical_features + ['sales'])
+
+data['category'] = np.random.choice(category_values, size=num_samples)
+data['brand'] = np.random.choice(brand_values, size=num_samples)
+data['price'] = np.random.uniform(low=10, high=100, size=num_samples)
+data['rating'] = np.random.uniform(low=1, high=5, size=num_samples)
+data['sales'] = np.random.randint(low=100, high=1000, size=num_samples)
+
+# Save the dataset to a CSV file
+data.to_csv('product_dataset.csv', index=False)
+
+print("Product dataset created and saved as 'product_dataset.csv'.")
